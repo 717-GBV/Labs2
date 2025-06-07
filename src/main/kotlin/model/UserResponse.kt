@@ -1,9 +1,14 @@
 package org.lab.model
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.annotation.JsonProperty
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Serializable
 data class UserResponse(
-    @JsonProperty("data") val data: List<User>
+    val page: Int,
+    @SerialName("per_page") val perPage: Int,
+    val total: Int,
+    @SerialName("total_pages") val totalPages: Int,
+    val data: List<User>,
+    val support: Support
 )
